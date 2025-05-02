@@ -27,10 +27,13 @@ case ${DEVICE} in
     PKG_GIT_CLONE_BRANCH="main"
   ;;
   RK3566-BSP-X55)
-    PKG_URL="https://github.com/RetroGFX/rk3566-x55-kernel.git"
-    PKG_VERSION="9e8f3703fe49d5d12bbb951e233248f5f3eb9efd"
-    GET_HANDLER_SUPPORT="git"
-    PKG_GIT_CLONE_BRANCH="main"
+#   PKG_URL="https://github.com/RetroGFX/rk3566-x55-kernel.git"
+#   PKG_VERSION="9e8f3703fe49d5d12bbb951e233248f5f3eb9efd"
+#   GET_HANDLER_SUPPORT="git"
+#   PKG_GIT_CLONE_BRANCH="main"
+    PKG_VERSION="6.12.17"
+    PKG_URL="https://www.kernel.org/pub/linux/kernel/v${PKG_VERSION/.*/}.x/${PKG_NAME}-${PKG_VERSION}.tar.xz"
+    PKG_PATCH_DIRS+=" panfrost"
   ;;
   RK356*)
     PKG_VERSION="6.8-rc6"

@@ -1,0 +1,17 @@
+#!/bin/bash
+ROOT_DIR="$(dirname "$(dirname "$0")")"
+while IFS= read -r __FAILED__; do
+  if [[ "${__FAILED__}" == *"/locks/"* ]]; then
+    BUILD_DIR="$(dirname "$(dirname "$(dirname "${__FAILED__}")")")"
+    PACKAGE_NAME="$(basename "${__FAILED__}" | cut -d: -f 1 | cut -d. -f 1)"
+    . "${ROOT_DIR}/config/options" "${PACKAGE_NAME}"
+    load_build_config "${BUILD_DIR}"
+    "${SCRIPTS}/clean" "${PACKAGE_NAME}"
+    if [ -d "${SOURCES}/${PACKAGE_NAME}" ]; then
+      rm -rf "${SOURCES:?}/${PACKAGE_NAME}"
+    fi
+    if [ -f "${__FAILED__}" ]; then
+      rm -f "${__FAILED__}"
+    fi
+  fi
+done < <(find "${ROOT_DIR}" -type f -name "*.failed" | sort -u)

@@ -1,0 +1,12 @@
+diff --git a/configs/rk3568_defconfig b/configs/rk3568_defconfig
+index 2360bdbe84..45aff38364 100644
+--- a/configs/rk3568_defconfig
++++ b/configs/rk3568_defconfig
+@@ -5,6 +5,7 @@
+ CONFIG_SYS_MALLOC_F_LEN=0x80000
+ CONFIG_SPL_FIT_GENERATOR="arch/arm/mach-rockchip/make_fit_atf.sh"
+ CONFIG_ROCKCHIP_RK3568=y
++CONFIG_ROCKCHIP_RK8XX_DISABLE_BOOT_ON_POWERON=y
+ CONFIG_ROCKCHIP_FIT_IMAGE=y
+ CONFIG_ROCKCHIP_VENDOR_PARTITION=y
+ CONFIG_ROCKCHIP_FIT_IMAGE_PACK=y
